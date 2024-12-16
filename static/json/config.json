@@ -1,5 +1,6 @@
 {
-    "app_width": 80,
-    "app_height": 70, 
-    "app_title": "EditImage"
+    "app_width": 0.8,
+    "app_height": 0.8, 
+    "app_title": "EDIT IMAGE",
+    "app_fg_color": "#1f1f1f"
 }
