@@ -1,0 +1,8 @@
+import json
+import os
+
+def read_json(fd: str):
+    path_to_file = os.path.abspath(__file__ + f'/../../static/json/{fd}')
+    with open(path_to_file, 'r') as data_json:
+        return json.load(data_json)
+
