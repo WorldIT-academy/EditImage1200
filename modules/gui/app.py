@@ -3,7 +3,7 @@ from ..read_json import read_json
 
 class App(ctk.CTk):
     def __init__ (self):
-        
+        #у змінну CONFIG записуємо дані файлу json
         self.CONFIG = read_json(fd= 'config.json')
         
         ctk.CTk.__init__(self, fg_color= self.CONFIG['app_fg_color'])
