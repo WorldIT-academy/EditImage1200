@@ -9,6 +9,9 @@ r'''
     
     Приклад застосування: 
     >>> app_button = AppButton(ch_master=self, name_icon='edit.png')
+
+    [Посилання до репозиторію](https://github.com/WorldIT-academy/EditImage1200/blob/master/modules/gui/app_button.py)
+
 '''
 import os
 import customtkinter as ctk
@@ -29,11 +32,13 @@ class AppButton(ctk.CTkButton):
             :mod:`ctk.CTkButton` - для створення кнопки;
             :mod:`PIL.Image.open` - відкриває зображення та повертає значення до класу CTkImage;
             :mod:`ctk.CTkImage` - задає формат зображенню в CTkImage для відображення у графічному інтерфейсі застосунку
-        
+  
     """
-    def __init__(self, ch_master: object, name_icon: str, size_side: float, **kwargs):
+    def __init__(self, ch_master: object, name_icon: str, size_side: float, function: object, **kwargs):
+
         self.NAME_ICON = name_icon
         self.SIZE = (int(size_side), int(size_side))
+
         ctk.CTkButton.__init__(
             self,
             master = ch_master,
@@ -41,6 +46,9 @@ class AppButton(ctk.CTkButton):
             width=  int(size_side),
             height= int(size_side),
             image= self.load_image(),
+            fg_color= ch_master._fg_color,
+            hover_color= '#373535',
+            command= function,
             **kwargs
         )
     def load_image(self):

@@ -3,6 +3,7 @@ from ..json.read_json import read_json
 from ..tools import create_media_folder
 from .app_frames import App_Frame
 from .app_button import AppButton
+from ..tools import search_file
 # Розробляємо інструкцію App, для створення віконого десктопного додатку за цією інструкцію 
 class App(ctk.CTk):
     def __init__(self):
@@ -82,6 +83,11 @@ class App(ctk.CTk):
             child_fg_color= "#1f1f1f"
         )
         self.CONTENT_DASHBOARD.place(x=0, y=self.DASHBOARD._current_height * 0.03)
-        self.BUTTON_HEADER = AppButton(ch_master= self.HEADER, name_icon= 'header.png')
+        self.BUTTON_HEADER = AppButton(
+            ch_master= self.VERTICAL_MENU, 
+            name_icon= 'header.png', 
+            size_side= self.VERTICAL_MENU._current_width * 0.5,
+            function= search_file
+        )
         self.BUTTON_HEADER.place(x = 10, y = 10)
 app = App()
