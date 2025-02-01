@@ -34,17 +34,18 @@ class AppButton(ctk.CTkButton):
             :mod:`ctk.CTkImage` - задає формат зображенню в CTkImage для відображення у графічному інтерфейсі застосунку
   
     """
-    def __init__(self, ch_master: object, name_icon: str, size_side: float, function: object, **kwargs):
+    def __init__(
+        self, ch_master: object, name_icon: str = None, size_side: tuple = [50, 50], function: object = None, text_button: str = '' , **kwargs):
 
         self.NAME_ICON = name_icon
-        self.SIZE = (int(size_side), int(size_side))
+        self.SIZE = size_side
 
         ctk.CTkButton.__init__(
             self,
             master = ch_master,
-            text= '',
-            width=  int(size_side),
-            height= int(size_side),
+            text= text_button,
+            width=  int(size_side[0]),
+            height= int(size_side[1]),
             image= self.load_image(),
             fg_color= ch_master._fg_color,
             hover_color= '#373535',
@@ -52,9 +53,13 @@ class AppButton(ctk.CTkButton):
             **kwargs
         )
     def load_image(self):
-        PATH = os.path.abspath(os.path.join(__file__, '..', '..', '..', 'static', 'icons', self.NAME_ICON))
-        return ctk.CTkImage(
-            light_image= Image.open(PATH),
-            size= self.SIZE
-        )
+        try:
+            PATH = os.path.abspath(os.path.join(__file__, '..', '..', '..', 'static', 'icons', self.NAME_ICON))
+            return ctk.CTkImage(
+                light_image= Image.open(PATH),
+                size= self.SIZE
+            )
+        except Exception as e:
+            print(f'Error: {str(e)}')
+            return None
 
