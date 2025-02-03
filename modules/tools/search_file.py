@@ -10,7 +10,7 @@ GREEN = colorama.Fore.GREEN
 
 
 def search_file(parent: object, buttons_parent: object):
-    # list_names_files = []
+    
     list_files = filedialog.askopenfilenames(
         initialdir= '/',
         parent= parent,
@@ -18,16 +18,25 @@ def search_file(parent: object, buttons_parent: object):
         title= 'Search for files'
     )
     print()
-    for name_file in list_files:
-        # list_names_files.append(name_file.split("/")[-1])
+    for path_file in list_files:
+        # Приклад для одного файлу із списку list_files
+        # path_file -> '/Users/worlditacademy/Downloads/worldIT_LOGO.ico'
+        # path_file.split("/") -> ['', 'Users', 'worlditacademy', 'Downloads', 'worldIT_LOGO.ico']
+        name_file = path_file.split("/")[-1] # -> worldIT_LOGO.ico
+        file_type = name_file.split(".")[-1]
+        
+        # Створення кнопки з назвою файла із розширенням
         button = AppButton(
             ch_master= buttons_parent,
-            text_button= name_file.split("/")[-1]  
+            text_button= f"{name_file[0:12]}...  .{file_type}"
         )
-        button.pack(pady=10, expand=False, fill= BOTH, in_= buttons_parent)
+        # Задаємо параметри розташування кнопки у Explorer
+        button.pack(padx= 30, pady=10, anchor = 'w')
+        # фіксуємо розміри нашого фрейму Explorer
+        buttons_parent.pack_propagate(False) 
         
-        print(f'{GREEN}File: -> {YELLOW}{name_file}')
+        print(f'{GREEN}File: -> {YELLOW}{path_file}')
         
     print()
-    # print(f'List of names: {GREEN}{list_names_files}')
+    
 

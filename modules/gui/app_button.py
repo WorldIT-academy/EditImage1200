@@ -35,10 +35,19 @@ class AppButton(ctk.CTkButton):
   
     """
     def __init__(
-        self, ch_master: object, name_icon: str = None, size_side: tuple = [50, 50], function: object = None, text_button: str = '' , **kwargs):
+            self, 
+            ch_master: object, 
+            name_icon: str = None,
+            size_side: tuple = [50, 50], 
+            function: object = None, 
+            text_button: str = '', 
+            text_variable: str = None,
+            **kwargs
+        ):
 
         self.NAME_ICON = name_icon
         self.SIZE = size_side
+        self.TEXT_VARIABLE = text_variable
 
         ctk.CTkButton.__init__(
             self,
@@ -50,6 +59,7 @@ class AppButton(ctk.CTkButton):
             fg_color= ch_master._fg_color,
             hover_color= '#373535',
             command= function,
+            font= ('Arial', 20, 'bold'),
             **kwargs
         )
     def load_image(self):
