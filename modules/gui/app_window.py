@@ -87,7 +87,7 @@ class App(ctk.CTk):
             ch_master= self.VERTICAL_MENU, 
             name_icon= 'header.png', 
             size_side= (self.VERTICAL_MENU._current_width * 0.5, self.VERTICAL_MENU._current_width * 0.5),
-            function= lambda: search_file(parent= self, buttons_parent= self.EXPLORER)
+            function= lambda: search_file(parent= self, buttons_parent= self.EXPLORER, dashboard= self.CONTENT_DASHBOARD)
         )
         self.BUTTON_HEADER.place(x = 10, y = 10)
 app = App()
