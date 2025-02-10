@@ -6,7 +6,7 @@ from tkinter import Tk, RIGHT, BOTH, RAISED, TOP
 from .show_image import ImageLable, show_image
 
 list_image = []
-list_button = []
+# list_button = []
 
 colorama.init(autoreset= True)
 YELLOW = colorama.Fore.YELLOW
@@ -33,13 +33,13 @@ def search_file(parent: ctk.CTk, buttons_parent: ctk.CTkFrame | ctk.CTkScrollabl
         button = AppButton(
             ch_master= buttons_parent,
             text_button= f"{name_file[0:12]}...  .{file_type}",
-            function= lambda: show_image(image= list_image[-1])
+            function= lambda name_button = name_file : show_image(button_name= name_button, frame= dashboard, list_images= list_image)
         )
         image = ImageLable(
             ch_master= dashboard,
             path_file= path_file
         )
-        list_button.append(button)
+        # list_button.append(button)
         list_image.append(image)
         
         # Задаємо параметри розташування кнопки у Explorer
